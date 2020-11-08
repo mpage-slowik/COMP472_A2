@@ -1,6 +1,7 @@
 from file_manipulation import output_solution
 from x_puzzle import X_Puzzle
 from algorithms.uniform_cost import ucs
+from algorithms.greedy_best_first import GBF
 from time import time
 from random import shuffle
 import numpy as np
@@ -49,5 +50,14 @@ def run():
 # test_x.move_left()
 # print(test_x)
 
+def run_gbf():
+    test_arr = [1, 0, 3, 6, 5, 2, 7, 4]
+    test_puzz1 = X_Puzzle(test_arr)
+    start_time = time()
+    # path, attempted = GBF(test_puzz1)
+    GBF(test_puzz1)
+    end_time = time()
+
 if __name__ == "__main__":
-    run()
+    # run()
+    run_gbf()

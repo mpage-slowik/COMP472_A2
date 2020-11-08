@@ -24,7 +24,8 @@ class X_Puzzle():
         self.puzzle = []
         for i in puzzle:
                 self.puzzle.append(i)
-        self.goal_state = [1,2,3,4,5,6,7,0]
+        self.goal_state = list(range(1, len(puzzle)))
+        self.goal_state.append(0)
 
     
     def __str__(self):
