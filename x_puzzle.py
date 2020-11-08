@@ -110,6 +110,7 @@ class Move:
         self.cost = cost
         self.moved_value = moved_value
         self.h = 0
+        self.g = 0
 
     def __hash__(self):
         return hash(tuple(self.instance))
