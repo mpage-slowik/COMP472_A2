@@ -1,17 +1,5 @@
+from algorithms.helpers.generics import possible_moves
 from x_puzzle import X_Puzzle, Move
-
-def possible_moves(current_node:Move):
-    moves = []
-    current_state, up, down, left, right = current_node.instance.get_instance(), current_node.instance.get_instance(), current_node.instance.get_instance(), current_node.instance.get_instance(), current_node.instance.get_instance()
-    if up.move_up():
-        moves.append(Move(up,current_node,'up',current_node.depth + 1, 1, up.puzzle[current_state.puzzle.index(0)]))
-    if down.move_down():
-        moves.append(Move(down,current_node,'down',current_node.depth + 1, 1, down.puzzle[current_state.puzzle.index(0)]))
-    if left.move_left():
-        moves.append(Move(left,current_node,'left',current_node.depth + 1, 1, left.puzzle[current_state.puzzle.index(0)]))
-    if right.move_right():
-        moves.append(Move(right,current_node,'right',current_node.depth + 1, 1, right.puzzle[current_state.puzzle.index(0)]))
-    return moves
 
 def ucs(puzzle:X_Puzzle):
     start = Move(puzzle.get_instance(),None,None,0,0,0)
