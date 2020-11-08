@@ -21,8 +21,8 @@ def custom_insort(a, x, lo=0, hi=None, key=lambda v: v):
 
 def possible_moves(current_node: Move):
     moves = []
-    current_state, up, down, left, right = current_node.instance.get_instance(), current_node.instance.get_instance(
-    ), current_node.instance.get_instance(), current_node.instance.get_instance(), current_node.instance.get_instance()
+    current_state, up, down, left, right, diag_adj, diag_opp, wrap = current_node.instance.get_instance(), current_node.instance.get_instance(
+    ), current_node.instance.get_instance(), current_node.instance.get_instance(), current_node.instance.get_instance(), current_node.instance.get_instance(), current_node.instance.get_instance(), current_node.instance.get_instance()
     if up.move_up():
         moves.append(Move(up, current_node, 'up', current_node.depth +
                           1, 1, up.puzzle[current_state.puzzle.index(0)]))
@@ -35,4 +35,13 @@ def possible_moves(current_node: Move):
     if right.move_right():
         moves.append(Move(right, current_node, 'right', current_node.depth +
                           1, 1, right.puzzle[current_state.puzzle.index(0)]))
+    if diag_opp.move_opposed_diagonal():
+        moves.append(Move(diag_opp, current_node, 'diagonal', current_node.depth +
+                          1, 2, diag_opp.puzzle[current_state.puzzle.index(0)]))
+    if diag_adj.move_adjacent_diagonal():
+        moves.append(Move(diag_adj, current_node, 'diagonal', current_node.depth +
+                          1, 2, diag_adj.puzzle[current_state.puzzle.index(0)]))
+    if wrap.move_wrap():
+        moves.append(Move(wrap, current_node, 'wrap', current_node.depth +
+                          1, 3, wrap.puzzle[current_state.puzzle.index(0)]))
     return moves
