@@ -20,7 +20,6 @@ def GBF(puzzle:X_Puzzle, heuristic):
             current = open_list.pop(0)
         else:
             return None, None
-        print(current)
 
     while(current.parent != None):
         pathing.insert(0,current)
