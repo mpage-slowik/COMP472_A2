@@ -32,6 +32,7 @@ def run_ucs():
 
 def run_gbf_h1():
     test_arr = [1, 0, 3, 6, 5, 2, 7, 4]
+    test_arr = [1,0,3,7,5,2,6,4]
     test_puzz1 = X_Puzzle(test_arr)
     start_time = time()
     solution, search = GBF(test_puzz1, get_hamming_distance)
@@ -67,8 +68,8 @@ def run_a_star_h2():
     print(len(solution))
 
 if __name__ == "__main__":
-    run_ucs()
-    # run_gbf_h1()
-    # run_gbf_h2()
-    # run_a_star_h1()
-    # run_a_star_h2()
+    # run_ucs()
+    run_gbf_h1()
+    run_gbf_h2()
+    run_a_star_h1()
+    run_a_star_h2()

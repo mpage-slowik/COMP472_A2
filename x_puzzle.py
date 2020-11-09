@@ -1,25 +1,6 @@
-# module for puzzle
-# can only move 0 with another position
-
-
-# class Node():
-#     def __init__(self, value, cost):
-#         self.cost = cost
-#         self.value = value
-#     def get_value(self):
-#         return self.value
-#     def get_cost(self):
-#         return self.cost
-#     def __str__(self):
-#         return str(self.get_value())
-#     def __repr__(self):
-#         return str(self)
-#     def __getitem__(self):
-#         return self.value
-#     def __index__(self):
-#         return self.value
 
 class X_Puzzle():
+
     def __init__(self, puzzle, h=0, g=0):
         self.h = h
         self.g = g
@@ -27,8 +8,8 @@ class X_Puzzle():
         for i in puzzle:
             self.puzzle.append(i)
         self.goal_state = [[1,2,3,4,5,6,7,0], [1,3,5,7,2,4,6,0]]
-        self.goal_state = list(range(1, len(puzzle)))
-        self.goal_state.append(0)
+        # self.goal_state = list(range(1, len(puzzle)))
+        # self.goal_state.append(0)
 
     def __str__(self):
         return str(" ".join(str(i) for i in self.puzzle))
