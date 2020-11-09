@@ -67,8 +67,8 @@ def run_a_star_h2():
     print(len(solution))
 
 if __name__ == "__main__":
-    # run_ucs()
-    run_gbf_h1()
-    run_gbf_h2()
-    run_a_star_h1()
-    run_a_star_h2()
+    run_ucs()
+    # run_gbf_h1()
+    # run_gbf_h2()
+    # run_a_star_h1()
+    # run_a_star_h2()

@@ -22,7 +22,7 @@ def ucs(puzzle:X_Puzzle):
                         open_list.append(move)
                 else:
                     open_list.append(move)
-        open_list.sort(key= lambda x: x.cost)
+        open_list.sort(key= lambda x: (x.depth,x.cost))
         attempted_moves.append(current)
         closed_list.add(current.instance)
         if len(open_list) > 0:
