@@ -1,5 +1,9 @@
 from algorithms.helpers.generics import possible_moves
 from x_puzzle import X_Puzzle, Move
+from threading import Timer
+_universal_exit = False
+def exitfunc():
+    _universal_exit = True
 
 def ucs(puzzle:X_Puzzle):
     start = Move(puzzle.get_instance(),None,None,0,0,0)
@@ -9,7 +13,10 @@ def ucs(puzzle:X_Puzzle):
     attempted_moves = []
     open_list.append(start)
     current = open_list.pop(0)
+    Timer(60, exitfunc).start() # exit in 60 seconds
     while current.instance.puzzle not in puzzle.get_goal():
+        if _universal_exit:
+            return None,None
         # print(open_list)
         # print(closed_list)
         for move in possible_moves(current):
@@ -22,13 +29,14 @@ def ucs(puzzle:X_Puzzle):
                 else:
                     open_list.append(move)
         open_list.sort(key= lambda x: (x.depth,x.cost))
+
         attempted_moves.append(current)
         closed_list.add(current.instance)
         if len(open_list) > 0:
             current = open_list.pop(0)
         else:
             return None, None
-        # print(current)
+        print(current)
         # print(closed_list)
         # print(current)
     # attepmted_moves.append(current)

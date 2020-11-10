@@ -8,6 +8,7 @@ from algorithms.uniform_cost import ucs
 from algorithms.greedy_best_first import GBF
 from algorithms.a_star import a_star
 from algorithms.helpers.heuristics import get_hamming_distance, get_sum_of_permutation
+from threading import Timer
 
 
 def run_ucs():
@@ -20,7 +21,11 @@ def run_ucs():
     print(test_arr)
     test_puzz1 = X_Puzzle(test_arr)
     start_time = time()
+
+
     path, attempted = ucs(test_puzz1)
+    if path == None:
+        print("no solution")
     end_time = time()
     print(end_time - start_time)
 
