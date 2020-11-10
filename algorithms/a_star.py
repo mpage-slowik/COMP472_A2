@@ -9,7 +9,7 @@ def a_star(puzzle:X_Puzzle, heuristic):
     attempted_moves = []
     open_list.append(start)
     current = open_list.pop(0)
-    while current.instance.puzzle != puzzle.get_goal():
+    while current.instance.puzzle not in puzzle.get_goal():
         for move in possible_moves(current):
             if move.instance not in closed_list:
                 move.h = heuristic(puzzle=move.instance)
@@ -21,7 +21,6 @@ def a_star(puzzle:X_Puzzle, heuristic):
             current = open_list.pop(0)
         else:
             return None, None
-        print(current)
 
     while(current.parent != None):
         pathing.insert(0,current)

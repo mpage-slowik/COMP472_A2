@@ -1,25 +1,6 @@
-# module for puzzle
-# can only move 0 with another position
-
-
-# class Node():
-#     def __init__(self, value, cost):
-#         self.cost = cost
-#         self.value = value
-#     def get_value(self):
-#         return self.value
-#     def get_cost(self):
-#         return self.cost
-#     def __str__(self):
-#         return str(self.get_value())
-#     def __repr__(self):
-#         return str(self)
-#     def __getitem__(self):
-#         return self.value
-#     def __index__(self):
-#         return self.value
 
 class X_Puzzle():
+
     def __init__(self, puzzle, h=0, g=0):
         self.h = h
         self.g = g
