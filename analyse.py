@@ -47,16 +47,16 @@ def anal(algorithm):
 if __name__ == "__main__":
     algos = ["ucs", "gbfs-h1", "gbfs-h2", "astar-h1", "astar-h2"]
     analysis = list()
-    col_width = 23
-    col_1_width = 30
-    print("".join(" ".ljust(col_1_width)), end="")
+    output = "  \t"
     for algo in algos:
-        print("".join(algo.ljust(col_width)), end="")
+        output = f'{output}{algo}\t'
         analysis.append(anal(algo))
-    print('')
+    output = f'{output}\n'
     for key in analysis[0]:
-        print("".join(key.ljust(col_1_width)), end="")
+        output = f'{output}{key}\t'
         for analy in analysis:
-            print("".join(analy[key].ljust(col_width)), end="")
-        print('')
-    
+            output = f'{output}{analy[key]}\t'
+        output = f'{output}\n'
+    with open("./analysis.txt", 'w') as f:
+        f.write(output)
+    print("result can be found in analysis.txt open it in excel")
