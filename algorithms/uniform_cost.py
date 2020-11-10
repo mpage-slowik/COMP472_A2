@@ -18,8 +18,7 @@ def ucs(puzzle:X_Puzzle):
                 if move in open_list:
                     current_index = open_list.index(move)
                     if move.cost < open_list[current_index].cost:
-                        open_list.remove(open_list[current_index])
-                        open_list.append(move)
+                        open_list[current_index] = move
                 else:
                     open_list.append(move)
         open_list.sort(key= lambda x: (x.depth,x.cost))
