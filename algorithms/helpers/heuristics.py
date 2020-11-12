@@ -1,5 +1,18 @@
 import sys
 
+def get_naive(puzzle):
+    best = sys.maxsize
+    for goal in puzzle.goal_state:
+        tmp = _get_specific_naive(puzzle.puzzle, goal)
+        if best > tmp:
+            best = tmp
+    return best
+
+def _get_specific_naive(puzzle, goal):
+    if puzzle[-1] == 0:
+        return 0
+    return 1
+
 def get_hamming_distance(puzzle):
     best = sys.maxsize
     for goal in puzzle.goal_state:

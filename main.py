@@ -7,7 +7,7 @@ from x_puzzle import X_Puzzle
 from algorithms.uniform_cost import ucs
 from algorithms.greedy_best_first import GBF
 from algorithms.a_star import a_star
-from algorithms.helpers.heuristics import get_hamming_distance, get_sum_of_permutation
+from algorithms.helpers.heuristics import get_hamming_distance, get_sum_of_permutation, get_naive
 
 def build_random_puzzles():
     curr_arr = ['0','1','2','3','4','5','6','7']
@@ -26,6 +26,8 @@ def run_input_file(filename):
             run_gbf_h1(current_instance,current_execution)
             run_gbf_h2(current_instance,current_execution)
             run_ucs(current_instance,current_execution)
+            # run_GBF_naive(current_instance,current_execution)
+            # run_a_star_naive(current_instance,current_execution)
             current_execution += 1
 
 def run_ucs(current_instance, current_execution):
@@ -110,6 +112,28 @@ def run_a_star_h2(current_instance, current_execution):
         output_solution(solution, './output/'+str(current_execution)+ "_astar-h2_solution.txt", end_time-start_time)
         output_search(search,'./output/'+str(current_execution)+ "_astar-h2_search.txt" )
 
+
+def run_GBF_naive(current_instance, current_execution):
+    print("Greedy Best First, h(n) => naive")
+    test_puzz = X_Puzzle(current_instance)
+    start_time = time()
+    solution, search = GBF(test_puzz, get_naive)
+    end_time = time()
+    print("search: "+str(search))
+    print("solution: "+str(solution))
+    print("time: "+str(end_time-start_time))
+
+
+def run_a_star_naive(current_instance, current_execution):
+    print("A⋆, h(n) => naive")
+    test_puzz = X_Puzzle(current_instance)
+    start_time = time()
+    solution, search = a_star(test_puzz, get_naive)
+    end_time = time()
+    print("search: "+str(search))
+    print("solution: "+str(solution))
+    print("time: "+str(end_time-start_time))
+
 if __name__ == "__main__":
     # run_ucs([1, 2, 4, 7, 3, 0, 5, 6], 0)
     run_input_file('input_puzzle.txt')
@@ -118,4 +142,5 @@ if __name__ == "__main__":
     # run_gbf_h2()
     # run_a_star_h1()
     # run_a_star_h2()
+
     sys.exit(0)
