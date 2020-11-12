@@ -1,3 +1,4 @@
+from sys import winver
 from time import time
 from random import shuffle
 import numpy as np
@@ -16,6 +17,40 @@ def build_random_puzzles():
             shuffle(curr_arr)
             f.write(str(' '.join(curr_arr)) + '\n')
 
+def run_scaled_up_puzzles():
+    scale_up = 7
+    val = 8
+    w = 4
+    h = 2
+    while val < 35:
+        scale = list(range(0,val))
+        shuffle(scale)
+        goal = list(range(1,val))
+        goal.append(0)
+        print(scale)
+        print(goal)
+        run_gbf_h1_for_scale(scale, val, w, h, goal)
+        val+=scale_up
+        scale_up+=2
+        w+=1
+        h+=1
+
+    
+def run_gbf_h1_for_scale(current_instance, current_execution,width, height, goal):
+    print("Greedy Best First, h(n) => hamming distance")
+    # test_arr = [1, 0, 3, 6, 5, 2, 7, 4]
+    test_puzz = X_Puzzle(current_instance, width=width, height=height, goal_state=[goal])
+    start_time = time()
+    solution, search = GBF(test_puzz, get_hamming_distance)
+    end_time = time()
+    if solution == None:
+        output_nosolution('./scaled_output/'+str(current_execution)+"_gbfs-h1_solution.txt")
+        output_nosolution('./scaled_output/'+str(current_execution)+"_gbfs-h1_search.txt")
+    else:
+        print(end_time - start_time)
+        output_solution(solution, './scaled_output/'+str(current_execution)+ "_gbfs-h1_solution.txt", end_time-start_time)
+        output_search(search,'./scaled_output/'+str(current_execution)+ "_gbfs-h1_search.txt" )
+
 def run_input_file(filename):
     with(open(filename)) as file:
         current_execution = 0
@@ -32,13 +67,6 @@ def run_input_file(filename):
 
 def run_ucs(current_instance, current_execution):
     print("Universal Cost Search")
-    # test_arr = [1, 0, 3, 6, 5, 2, 7, 4]
-    # test_arr = [6, 3, 4, 7, 1, 2, 5, 0]
-    # test_arr = [3, 0, 1, 4, 2, 6, 5, 7]
-    # test_arr = [0,1,2,3,4,5,6,7]
-    # test_arr = [1,0,3,7,5,2,6,4]
-    # shuffle(test_arr)
-    # print(current_instance)
     test_puzz = X_Puzzle(current_instance)
     start_time = time()
     solution, search = ucs(test_puzz)
@@ -135,8 +163,9 @@ def run_a_star_naive(current_instance, current_execution):
     print("time: "+str(end_time-start_time))
 
 if __name__ == "__main__":
+    run_scaled_up_puzzles()
     # run_ucs([1, 2, 4, 7, 3, 0, 5, 6], 0)
-    run_input_file('input_puzzle.txt')
+    # run_input_file('input_puzzle.txt')
     # run_ucs()
     # run_gbf_h1()
     # run_gbf_h2()

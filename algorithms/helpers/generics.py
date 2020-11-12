@@ -21,8 +21,9 @@ def custom_insort(a, x, lo=0, hi=None, key=lambda v: v):
 
 def possible_moves(current_node: Move):
     moves = []
-    current_state, up, down, left, right, diag_adj, diag_opp, wrap = current_node.instance.get_instance(), current_node.instance.get_instance(
-    ), current_node.instance.get_instance(), current_node.instance.get_instance(), current_node.instance.get_instance(), current_node.instance.get_instance(), current_node.instance.get_instance(), current_node.instance.get_instance()
+    current_state, up, down, left, right, diag_adj, diag_opp, wrap, wrap_col = current_node.instance.get_instance(), current_node.instance.get_instance(
+    ), current_node.instance.get_instance(), current_node.instance.get_instance(), current_node.instance.get_instance(), current_node.instance.get_instance(), current_node.instance.get_instance(), current_node.instance.get_instance(), current_node.instance.get_instance()
+    
     if up.move_up():
         moves.append(Move(up, current_node, 'up', current_node.depth +
                           1, 1, up.puzzle[current_state.puzzle.index(0)]))
@@ -44,4 +45,8 @@ def possible_moves(current_node: Move):
     if wrap.move_wrap():
         moves.append(Move(wrap, current_node, 'wrap', current_node.depth +
                           1, 3, wrap.puzzle[current_state.puzzle.index(0)]))
+    if wrap_col.height > 2:
+        if wrap_col.move_wrap_col():
+                moves.append(Move(wrap_col, current_node, 'wrap', current_node.depth +
+                            1, 3, wrap_col.puzzle[current_state.puzzle.index(0)]))
     return moves

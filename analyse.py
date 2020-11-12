@@ -37,7 +37,7 @@ def anal(algorithm, file_names):
         'total solution length':f'{total_solution_length}',
         'average solution length':f'{total_solution_length/num_of_valid_sol}',
         'total search length':f'{total_search_length}',
-        'avarage search length':f'{total_search_length/num_of_valid_sol}',
+        'average search length':f'{total_search_length/num_of_valid_sol}',
         'total cost': f'{total_cost}',
         'average cost':f'{total_cost/num_of_valid_sol}',
         'total execution time':f'{total_execution_time}',
@@ -52,17 +52,17 @@ if __name__ == "__main__":
     for (dirpath, dirnames, filenames) in walk("./output"):
         file_names.extend(filenames)
     analysis = list()
-    output = "  \t"
+    output = ","
     for algo in algos:
-        output = f'{output}{algo}\t'
+        output = f'{output}{algo},'
         analysis.append(anal(algo, file_names))
     output = f'{output}\n'
     for key in analysis[0]:
         if key =='route_costs':
             continue
-        output = f'{output}{key}\t'
+        output = f'{output}{key},'
         for analy in analysis:
-            output = f'{output}{analy[key]}\t'
+            output = f'{output}{analy[key]},'
         output = f'{output}\n'
     
     best_algos = {}
@@ -78,9 +78,9 @@ if __name__ == "__main__":
                 else:
                     best_algos[algos[index]] = best_algos[algos[index]]+1
     
-    output = f'{output}# of optimal paths\t'
+    output = f'{output}# of optimal paths,'
     for algo in algos:
-        output = f'{output}{best_algos[algo]}\t'
-    with open("./analysis.txt", 'w') as f:
+        output = f'{output}{best_algos[algo]},'
+    with open("./analysis.csv", 'w') as f:
         f.write(output)
-    print("result can be found in analysis.txt open it in excel")
+    print("result can be found in analysis.csv open it in excel")
