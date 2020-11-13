@@ -23,7 +23,7 @@ def get_hamming_distance(puzzle):
 
 def _get_specific_hamming_distance(puzzle, goal):
     hamming_distance = 0
-    for pos in range(len(puzzle)):
+    for pos in range(0, len(puzzle), 2):
         if puzzle[pos] != goal[pos]:
             hamming_distance = hamming_distance + 1
     return hamming_distance
@@ -34,7 +34,7 @@ def get_sum_of_permutation(puzzle):
         tmp = _get_specific_sum_permutation(puzzle.puzzle, goal)
         if best > tmp:
             best = tmp
-    return best
+    return best/8
 
 def _get_specific_sum_permutation(puzzle, goal):
     sum_of_permutation = 0

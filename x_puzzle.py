@@ -10,8 +10,6 @@ class X_Puzzle():
         for i in puzzle:
             self.puzzle.append(i)
         self.goal_state = goal_state
-        # self.goal_state = list(range(1, len(puzzle)))
-        # self.goal_state.append(0)
 
     def __str__(self):
         return str(" ".join(str(i) for i in self.puzzle))

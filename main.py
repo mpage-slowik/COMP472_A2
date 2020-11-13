@@ -1,4 +1,3 @@
-from sys import winver
 from time import time
 from random import shuffle
 import numpy as np
@@ -56,11 +55,11 @@ def run_input_file(filename):
         current_execution = 0
         for line in file:
             current_instance = [int(x) for x in line.split()]
-            run_a_star_h1(current_instance,current_execution)
+            # run_a_star_h1(current_instance,current_execution)
             run_a_star_h2(current_instance,current_execution) 
-            run_gbf_h1(current_instance,current_execution)
-            run_gbf_h2(current_instance,current_execution)
-            run_ucs(current_instance,current_execution)
+            # run_gbf_h1(current_instance,current_execution)
+            # run_gbf_h2(current_instance,current_execution)
+            # run_ucs(current_instance,current_execution)
             # run_GBF_naive(current_instance,current_execution)
             # run_a_star_naive(current_instance,current_execution)
             current_execution += 1
@@ -117,13 +116,13 @@ def run_a_star_h1(current_instance, current_execution):
     start_time = time()
     solution, search = a_star(test_puzz, get_hamming_distance)
     end_time = time()
-    if solution == None:
-        output_nosolution('./output/'+str(current_execution)+"_astar-h1_solution.txt")
-        output_nosolution('./output/'+str(current_execution)+"_astar-h1_search.txt")
-    else:
-        print(end_time - start_time)
-        output_solution(solution, './output/'+str(current_execution)+ "_astar-h1_solution.txt", end_time-start_time)
-        output_search(search,'./output/'+str(current_execution)+ "_astar-h1_search.txt" )
+    # if solution == None:
+    #     output_nosolution('./output/'+str(current_execution)+"_astar-h1_solution.txt")
+    #     output_nosolution('./output/'+str(current_execution)+"_astar-h1_search.txt")
+    # else:
+    #     print(end_time - start_time)
+    #     output_solution(solution, './output/'+str(current_execution)+ "_astar-h1_solution.txt", end_time-start_time)
+    #     output_search(search,'./output/'+str(current_execution)+ "_astar-h1_search.txt" )
 
 def run_a_star_h2(current_instance, current_execution):
     print("A⋆, h(n) => sum of permutation")
@@ -132,13 +131,13 @@ def run_a_star_h2(current_instance, current_execution):
     start_time = time()
     solution, search = a_star(test_puzz, get_sum_of_permutation)
     end_time = time()
-    if solution == None:
-        output_nosolution('./output/'+str(current_execution)+"_astar-h2_solution.txt")
-        output_nosolution('./output/'+str(current_execution)+"_astar-h2_search.txt")
-    else:
-        print(end_time - start_time)
-        output_solution(solution, './output/'+str(current_execution)+ "_astar-h2_solution.txt", end_time-start_time)
-        output_search(search,'./output/'+str(current_execution)+ "_astar-h2_search.txt" )
+    # if solution == None:
+    #     output_nosolution('./output/'+str(current_execution)+"_astar-h2_solution.txt")
+    #     output_nosolution('./output/'+str(current_execution)+"_astar-h2_search.txt")
+    # else:
+    #     print(end_time - start_time)
+    #     output_solution(solution, './output/'+str(current_execution)+ "_astar-h2_solution.txt", end_time-start_time)
+    #     output_search(search,'./output/'+str(current_execution)+ "_astar-h2_search.txt" )
 
 
 def run_GBF_naive(current_instance, current_execution):
@@ -163,9 +162,9 @@ def run_a_star_naive(current_instance, current_execution):
     print("time: "+str(end_time-start_time))
 
 if __name__ == "__main__":
-    run_scaled_up_puzzles()
+    # run_scaled_up_puzzles()
     # run_ucs([1, 2, 4, 7, 3, 0, 5, 6], 0)
-    # run_input_file('input_puzzle.txt')
+    run_input_file('input_puzzle.txt')
     # run_ucs()
     # run_gbf_h1()
     # run_gbf_h2()
