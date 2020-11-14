@@ -56,12 +56,12 @@ def run_input_file(filename):
         for line in file:
             current_instance = [int(x) for x in line.split()]
             # run_a_star_h1(current_instance,current_execution)
-            run_a_star_h2(current_instance,current_execution) 
+            # run_a_star_h2(current_instance,current_execution) 
             # run_gbf_h1(current_instance,current_execution)
             # run_gbf_h2(current_instance,current_execution)
             # run_ucs(current_instance,current_execution)
             # run_GBF_naive(current_instance,current_execution)
-            # run_a_star_naive(current_instance,current_execution)
+            run_a_star_naive(current_instance,current_execution)
             current_execution += 1
 
 def run_ucs(current_instance, current_execution):
