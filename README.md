@@ -1,3 +1,4 @@
+https://github.com/mpage-slowik/COMP472_A2
 # COMP472_A2
 run "python main.py" to run any method
 run under main uncomment:
