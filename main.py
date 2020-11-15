@@ -39,24 +39,24 @@ def run_scaled_up_puzzles():
 
 
 def run_gbf_h1_for_scale(current_instance, current_execution, width, height, goal):
-    print("Greedy Best First, h(n) => modified hamming distance")
+    print("Greedy Best First, h(n) => modified sum of permutation")
     # test_arr = [1, 0, 3, 6, 5, 2, 7, 4]
     test_puzz = X_Puzzle(current_instance, width=width,
                          height=height, goal_state=[goal])
     start_time = time()
-    solution, search = GBF(test_puzz, get_modified_hamming_distance)
+    solution, search = GBF(test_puzz, get_modified_sum_of_permutation)
     end_time = time()
     if solution == None:
         output_nosolution('./scaled_output/' +
-                          str(current_execution)+"_gbfs-h1_solution.txt")
+                          str(current_execution)+"_gbfs-h2_solution.txt")
         output_nosolution('./scaled_output/' +
-                          str(current_execution)+"_gbfs-h1_search.txt")
+                          str(current_execution)+"_gbfs-h2_search.txt")
     else:
         print(end_time - start_time)
         output_solution(solution, './scaled_output/'+str(current_execution) +
-                        "_gbfs-h1_solution.txt", end_time-start_time)
+                        "_gbfs-h2_solution.txt", end_time-start_time)
         output_search(search, './scaled_output/' +
-                      str(current_execution) + "_gbfs-h1_search.txt")
+                      str(current_execution) + "_gbfs-h2_search.txt")
 
 
 def run_input_file(filename):
@@ -196,9 +196,9 @@ def run_a_star_naive():
 
 
 if __name__ == "__main__":
-    # run_scaled_up_puzzles()
+    run_scaled_up_puzzles()
     # run_ucs([1, 2, 4, 7, 3, 0, 5, 6], 0)
-    run_input_file('input_puzzle.txt')
+    # run_input_file('input_puzzle.txt')
     # run_a_star_h1([1, 2, 4, 7, 3, 0, 5, 6], 0)
     # run_a_star_naive()
     # run_GBF_naive()
