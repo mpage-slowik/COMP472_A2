@@ -68,7 +68,7 @@ def run_input_file(filename):
             run_a_star_h2(current_instance, current_execution)
             run_gbf_h1(current_instance, current_execution)
             run_gbf_h2(current_instance, current_execution)
-            # run_ucs(current_instance, current_execution)
+            run_ucs(current_instance, current_execution)
             current_execution += 1
 
 
@@ -198,7 +198,7 @@ def run_a_star_naive():
 if __name__ == "__main__":
     # run_scaled_up_puzzles()
     # run_ucs([1, 2, 4, 7, 3, 0, 5, 6], 0)
-    # run_input_file('input_puzzle.txt')
+    run_input_file('input_puzzle.txt')
     # run_a_star_h1([1, 2, 4, 7, 3, 0, 5, 6], 0)
     # run_a_star_naive()
     # run_GBF_naive()
